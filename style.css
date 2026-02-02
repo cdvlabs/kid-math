@@ -1,24 +1,38 @@
-/* Tùy chỉnh thêm ngoài Bootstrap */
+/* style.css */
 body {
-    background: linear-gradient(135deg, #e0f7fa 0%, #80deea 100%);
+    /* Màu nền nhạt phù hợp với Minty */
+    background-color: #f9fbf9;
     min-height: 100vh;
+    display: flex;
+    align-items: center;
 }
 
 .card {
-    transition: all 0.3s ease;
+    border-width: 3px !important;
 }
 
 #qText {
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-    color: #2c3e50;
+    /* Hiệu ứng chữ trông vui mắt hơn */
+    color: #5a5a5a;
+    letter-spacing: 2px;
 }
 
-/* Hiệu ứng khi trả lời đúng/sai */
-.animate-correct {
-    animation: bounce 0.5s;
+/* Hiệu ứng thông báo */
+#msg.text-success {
+    color: #78c2ad !important; /* Màu đặc trưng của Minty */
+    animation: bounce 0.4s ease;
+}
+
+#msg.text-danger {
+    color: #ff7851 !important; /* Màu cam hồng của Minty */
 }
 
 @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Làm các ô input trông mập mạp, dễ thương hơn */
+.form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(120, 194, 173, 0.25);
 }
