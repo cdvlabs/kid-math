@@ -3,57 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toán Tiểu Học</title>
+    <title>Bé Học Toán - CDV Labs</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="container">
-        <h2>🧮 Bé Luyện Toán</h2>
-        
-        <!-- CẤU HÌNH -->
-        <div class="settings" id="settingsPanel">
-            <div class="form-group">
-                <label>Phạm vi số:</label>
-                <div class="range-box">
-                    <input type="number" id="minVal" value="1">
-                    <span>đến</span>
-                    <input type="number" id="maxVal" value="10">
+<body class="bg-light">
+
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-lg border-0 rounded-4">
+                    <div class="card-header bg-primary text-white text-center py-3 rounded-top-4">
+                        <h2 class="mb-0">🧮 Bé Luyện Toán</h2>
+                    </div>
+                    
+                    <div class="card-body p-4">
+                        <!-- CẤU HÌNH -->
+                        <div id="settingsPanel">
+                            <h5 class="card-title mb-3 text-secondary">Cài đặt bài tập</h5>
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Phạm vi số:</label>
+                                <div class="input-group">
+                                    <input type="number" id="minVal" class="form-control" value="1">
+                                    <span class="input-group-text">đến</span>
+                                    <input type="number" id="maxVal" class="form-control" value="10">
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">Phép tính:</label>
+                                <div class="d-flex flex-wrap gap-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="add" checked>
+                                        <label class="form-check-label" for="add">Cộng (+)</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="sub" checked>
+                                        <label class="form-check-label" for="sub">Trừ (-)</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="mul">
+                                        <label class="form-check-label" for="mul">Nhân (×)</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="div">
+                                        <label class="form-check-label" for="div">Chia (÷)</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-lg w-100 rounded-pill" onclick="startGame()">Bắt đầu học ngay 🚀</button>
+                        </div>
+
+                        <!-- MÀN HÌNH CHƠI -->
+                        <div id="gamePanel" style="display:none;">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <span class="badge bg-success fs-6 p-2">Đúng: <span id="score">0</span></span>
+                                <button class="btn btn-sm btn-outline-secondary" onclick="location.reload()">⚙ Cài đặt lại</button>
+                            </div>
+
+                            <div class="text-center">
+                                <div class="display-1 fw-bold mb-4" id="qText">1 + 1 = ?</div>
+                                <div class="input-group input-group-lg mb-3 mx-auto" style="max-width: 200px;">
+                                    <input type="number" id="userAns" class="form-control text-center border-primary border-2" placeholder="?" onkeydown="if(event.key==='Enter') check()">
+                                </div>
+                                <div id="msg" class="fs-4 fw-bold mb-4" style="height: 40px;"></div>
+                                <button class="btn btn-primary btn-lg px-5 rounded-pill" onclick="check()">Kiểm tra ✔</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="form-group">
-                <label>Phép tính:</label>
-                <div class="checks">
-                    <!-- Mặc định checked Cộng/Trừ theo ý bạn -->
-                    <label><input type="checkbox" id="add" checked> Cộng (+)</label>
-                    <label><input type="checkbox" id="sub" checked> Trừ (-)</label>
-                    <label><input type="checkbox" id="mul"> Nhân (×)</label>
-                    <label><input type="checkbox" id="div"> Chia (÷)</label>
-                </div>
-            </div>
-            <button class="btn-primary" onclick="startGame()">Bắt đầu làm bài</button>
-        </div>
-
-        <!-- MÀN HÌNH CHƠI -->
-        <div class="game" id="gamePanel" style="display:none;">
-            <div class="stats">
-                <span>Đúng: <b id="score" style="color:green">0</b></span>
-            </div>
-
-            <div class="question">
-                <span id="qText">1 + 1 = ?</span>
-            </div>
-
-            <input type="number" id="userAns" placeholder="..." onkeydown="if(event.key==='Enter') check()">
-            
-            <div class="msg" id="msg"></div>
-
-            <div class="actions">
-                <button class="btn-check" onclick="check()">Kiểm tra</button>
-                <button class="btn-sec" onclick="location.reload()">⚙ Cài đặt lại</button>
+                <p class="text-center mt-4 text-muted small">© 2026 CDV Labs - Educational Project</p>
             </div>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
